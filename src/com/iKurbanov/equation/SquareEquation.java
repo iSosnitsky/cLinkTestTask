@@ -9,7 +9,7 @@ class SquareEquation {
         this.a = a;
         this.b = b;
 
-        //If right part isn't 0, it could be moved right away.
+        //If right part isn't 0, it could be moved right away
         this.c = c-rightPart;
     }
 
@@ -17,20 +17,21 @@ class SquareEquation {
         double d = (b * b) - (4 * a * c);
 
         if (d<0) {
-            System.out.println("D="+d+", вещественных корней не существует");
+            System.out.println("D= "+d+", вещественных корней не существует");
         } else if(a==0 && b==0){
             System.out.println("a=0 и b=0, это не квадратное уравнение");
         }else if(a==0){
             double x = (c/b);
-            System.out.println("x="+x);
+            System.out.println("a=0, это линейное уравнение");
+            System.out.println("x= "+x);
         } else {
-            System.out.println("D="+d);
+            System.out.println("D= "+d);
 
             double x1 = (Math.sqrt(d)-b) /(2*a);
             double x2 = (-Math.sqrt(d)-b) /(2*a);
 
-            System.out.println("x1="+x1);
-            System.out.println("x2="+x2);
+            System.out.println("x1= "+x1);
+            System.out.println("x2= "+x2);
         }
     }
 }
