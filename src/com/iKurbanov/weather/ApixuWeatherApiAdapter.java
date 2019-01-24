@@ -8,14 +8,18 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.URLEncoder;
 
+/**
+ * Adapter for Apixu java api
+ * https://github.com/apixu/apixu-java
+ */
 public class ApixuWeatherApiAdapter implements WeatherApi {
-    private final String apiKey = "8325b93519574382bd1153342192301";
+    private final static String apiKey = "8325b93519574382bd1153342192301";
 
-    //APIXU's java api seems like a wrapper for their http api
+    //Apixu's java api seems like a wrapper for their http api with data models
     private final Repository repo = new Repository();
 
     /**
-     * //Takes a city name and returns the temperature there
+     * Takes a city name and returns the temperature there
      * @param cityName A name of a city. Preferably in english.
      * @return Temperature of a given city
      * @throws Exception - thrown in rare cases when internet might be unavailable, or when server-side problems occur
