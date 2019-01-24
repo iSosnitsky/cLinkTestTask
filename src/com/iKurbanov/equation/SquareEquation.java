@@ -1,14 +1,19 @@
-package com.iKurbanov;
+package com.iKurbanov.equation;
 
-public class SquareEquation {
+class SquareEquation {
+    private final Double a;
+    private final Double b;
+    private final Double c;
 
-    public static void main(String[] args) {
-        //ax^2+bx+c = 7
-        int rightPart = 7;
-        double a = Double.valueOf(args[0]);
-        double b = Double.valueOf(args[1]);
-        double c = Double.valueOf(args[2])-rightPart;
+    SquareEquation(Double a, Double b, Double c, Integer rightPart) {
+        this.a = a;
+        this.b = b;
 
+        //If right part isn't 0, it could be moved right away.
+        this.c = c-rightPart;
+    }
+
+    void solve(){
         double d = (b * b) - (4 * a * c);
 
         if (d<0) {
@@ -27,11 +32,5 @@ public class SquareEquation {
             System.out.println("x1="+x1);
             System.out.println("x2="+x2);
         }
-
-
-
     }
-
-
-
 }
