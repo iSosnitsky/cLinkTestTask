@@ -1,6 +1,9 @@
 package com.iKurbanov.weather;
 
-//APIXU doesn't work well with cyrillic names
+
+/**
+ * This ENUM contains 4 default city names
+ */
 enum City {
     DMG("Dimitrovgrad","Димитровград"),
     MSK("Moscow","Москва"),
@@ -10,10 +13,17 @@ enum City {
     private String engName;
     private String ruName;
 
+    /**
+     * @return English city name, suited for ApixuAPI
+     */
     public String getEngName() {
         return engName;
     }
 
+
+    /**
+     * @return Russian city name, intended to be displayed to the user
+     */
     public String getRuName() {
         return ruName;
     }

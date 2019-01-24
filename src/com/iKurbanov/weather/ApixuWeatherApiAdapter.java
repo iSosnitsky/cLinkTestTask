@@ -14,7 +14,12 @@ public class ApixuWeatherApiAdapter implements WeatherApi {
     //APIXU's java api seems like a wrapper for their http api
     private final Repository repo = new Repository();
 
-    //Takes a city name and returns the temperature there
+    /**
+     * //Takes a city name and returns the temperature there
+     * @param cityName A name of a city. Preferably in english.
+     * @return Temperature of a given city
+     * @throws Exception - thrown in rare cases when internet might be unavailable, or when server-side problems occur
+     */
     @Override
     public String getTemperatureForCity(String cityName) throws Exception{
         PrintStream originalStream = System.out;
@@ -27,11 +32,15 @@ public class ApixuWeatherApiAdapter implements WeatherApi {
                 }
             }));
 
+            //Weather model is a POJO-equvalent of Apixu's json model
             WeatherModel weatherData = repo.GetWeatherData(apiKey, RequestBlocks.GetBy.CityName, URLEncoder.encode(cityName,"UTF-8"));
 
             //Returning the original out back in place
             System.setOut(originalStream);
-            return String.valueOf(weatherData.getCurrent().temp_c);
+
+            String weather = String.valueOf(weatherData.getCurrent().temp_c);
+
+            return weather;
         } catch (Exception e){
             System.setOut(originalStream);
             throw e;
